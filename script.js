@@ -1,33 +1,38 @@
- let menu = document.querySelector('#menu-btn');
- let navbar = document.querySelector('.header .navbar')
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", function(){
+header.classList.toggle("sticky", window.scrollY > 90);
+});
+
+let menu = document.querySelector('#menu-btn');
+let navlist = document.querySelector('.header .navbar');
+
+
 menu.onclick = () => {
     menu.classList.toggle('ri-xrp-line');
-    navbar.classList.toggle('active');
-}
+    navlist.classList.toggle('active');
+};
 
-menu.onscroll = () =>{
-    menu.classList.remove('ri-xrp-line')
-    navbar.classList.remove('active')
-}
+window.onscroll = ()=>{
+    menu.classList.remove('bx-x');
+    navlist.classList.remove('open');
+};
 
+const sr = ScrollReveal({
+    origin:'top',
+    distance:'85px',
+    duration:'2500',
+    reset:true
+})
 
+sr.reveal ('.home-text',{delay:300});
+sr.reveal ('.home-img',{delay:400});
+sr.reveal ('.container',{delay:400});
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     // Menghubungi melalui WhatsApp
-//     document.getElementById("whatsappbtn").addEventListener("click", function () {
-//       window.location.href =
-//         "https://api.whatsapp.com/send?phone=6282131323598&text=Halo%2C%20saya%20tertarik%20dengan%20leptop%20jenis%20asus%20Anda";
-//     });
-//   });
+sr.reveal ('.abaout-img',{});
+sr.reveal ('.abaout-text',{delay:300});
 
+sr.reveal ('.middle-text',{});
+sr.reveal ('.row-btn,.shop-content',{delay:300});
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Menghubungi melalui WhatsApp
-  document.body.addEventListener("click", function (event) {
-      if (event.target.classList.contains("whatsappbtn")) {
-          var phone = event.target.getAttribute("data-phone");
-          var message = encodeURIComponent(event.target.getAttribute("data-message"));
-          window.location.href = "https://api.whatsapp.com/send?phone=" + phone + "&text=" + message;
-      }
-  });
-});
+sr.reveal ('.review-content,.content',{delay:300});
